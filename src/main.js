@@ -9,29 +9,9 @@ Vue.use(BootstrapVue)
 
 Vue.config.productionTip = false
 
-/*
-var request = require('request')
-
-var options = {
-  method: 'GET',
-  url: 'https://ganzo-0e2f.restdb.io/rest/data-users',
-  headers: {
-    'cache-control': 'no-cache',
-    'x-apikey': 'a046c95522621e31cf8598fb270fd5a9f9933'
-  }
-}
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error)
-
-  console.log(body)
-})
-*/
-
 // eslint-disable-next-line
 var db = new restdb('5bfe68f9b83385326c1388b9')
 console.log(db)
-
 // eslint-disable-next-line
 var titolo = new Vue({
   el: '#titolo',
@@ -45,9 +25,22 @@ var titolo = new Vue({
   }
 })
 // eslint-disable-next-line
+var titolo2 = new Vue({
+  el: '#titolo2',
+  data: {
+    style: {
+      color: '#4f2fcc',
+      margin: '2vh 0vh 12vh 0vh',
+      fontSize: '10vh',
+      textAlign: 'center'
+    }
+  }
+})
+//eslint-disable-next-line
 var app1 = new Vue({
   el: '#app-1',
   data () {
+    // LOGIN
     db.datausers.getById('5bfe68f728f51750000042f2', (err, res) => {
       if (!err) {
         // res is a datausers instance
@@ -83,25 +76,30 @@ var app1 = new Vue({
       input: {
         width: '90%',
         height: '5vh'
+      },
+      // REGISTRATI
+      account: {
+        nome: '',
+        cognome: '',
+        email: '',
+        username: '',
+        password: ''
       }
     }
   },
   methods: {
+    // LOGIN
     trova () {
       var query = {} // get all records
-      var hints = {'$max': 10, '$orderby': {'_id': -1}} // top ten, sort by creation id in descending order
+      var hints = {'$orderby': {'_id': -1}} // top ten, sort by creation id in descending order
       db.datausers.find(query, hints, (err, res) => {
         if (!err) {
-          console.log('find')
-          console.log(res)
-          console.log('ciao')
-          console.log(this.b)
           for (var i = 0; i < res.length && this.pag !== 2; i++) {
             if (res[i].username === this.username && res[i].password === this.password) {
               this.pag = 2
             }
           }
-          if (this.pag === 0) {
+          if (this.pag !== 2) {
             alert('Le credenziali inserite sono errate, Riprova')
           }
           // res is an array of datausers instances
@@ -110,6 +108,18 @@ var app1 = new Vue({
     },
     pagina1 () {
       this.pag = 1
+    },
+    // REGISTRATI
+    creaAccount () {
+      var obj = new db.datausers(this.account)
+      obj.save((err, res) => {
+        if (!err){
+          this.pag = 2
+        }
+      })
+    },
+    pagina0 () {
+      this.pag = 0
     }
   }
 })

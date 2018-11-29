@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Ganzo</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!-- jquery -->
@@ -14,26 +15,38 @@
     <!-- vue cdn -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 
-    <title>Ganzo</title>
   </head>
   <body>
-
     <div id="app-1">
 
       <div v-show="pag === 0">
         <h1 id="titolo" :style="style">Ganzo</h1>
         <div class="text-center">
-          <input v-model="username" :style="input" placeholder="Inserisci il nome utente">
+          <input v-model="username" placeholder="Inserisci il nome utente" :style="input">
           <br><br><br>
-          <input v-model="password" :style="input" placeholder="Inserisci la tua password">
+          <input v-model="password" placeholder="Inserisci la tua password" :style="input">
           <br><br><br>
-          <b-btn :style="btnL" @click="trova">Login</b-btn>
-          <b-btn variant="link" :style="btnR" @click="pagina1">Register</b-btn>
+          <b-btn @click="trova" :style="btnL">Login</b-btn>
+          <b-btn variant="link" @click="pagina1" :style="btnR">Registrati</b-btn>
         </div>
       </div>
 
       <div v-show="pag === 1">
-        <h1>Registrati</h1>
+        <h1 id="titolo2" :style="style">Ganzo</h1>
+        <div class="text-center">
+          <input v-model="account.email" placeholder="Inserisci la tua e-mail" :style="input">
+          <br><br><br>
+          <input v-model="account.nome" placeholder="Inserisci il nome" :style="input">
+          <br><br><br>
+          <input v-model="account.cognome" placeholder="Inserisci il cognome" :style="input">
+          <br><br><br>
+          <input v-model="account.username" placeholder="Inserisci il nome utente" :style="input">
+          <br><br><br>
+          <input v-model="account.password" placeholder="Inserisci la tua password" :style="input">
+          <br><br><br>
+          <b-btn @click="creaAccount" :style="btnL">Registrati</b-btn>
+          <b-btn variant="link" @click="pagina0" :style="btnR">Annulla</b-btn>
+        </div>
       </div>
 
       <div v-show="pag === 2">
@@ -41,6 +54,5 @@
       </div>
 
     </div>
-
   </body>
 </html>
