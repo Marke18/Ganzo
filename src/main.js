@@ -30,7 +30,7 @@ var titolo2 = new Vue({
   data: {
     style: {
       color: '#4f2fcc',
-      margin: '2vh 0vh 12vh 0vh',
+      margin: '2vh 0vh 6vh 0vh',
       fontSize: '10vh',
       textAlign: 'center'
     }
@@ -59,6 +59,8 @@ var app1 = new Vue({
         marginLeft: '5vh',
         width: '30%',
         height: '6vh',
+        minHeight: '22px',
+        padding: '0vh',
         backgroundColor: '#4f2fcc',
         textALign: 'center',
         border: '0vh'
@@ -68,7 +70,9 @@ var app1 = new Vue({
         marginTop: '4vh',
         marginRight: '5vh',
         width: '30%',
-        height: '3vh',
+        minHeight: '22px',
+        height: '6vh',
+        padding: '0vh',
         textALign: 'center',
         color: '#4f2fcc',
         textDecoration: 'none'
@@ -101,6 +105,8 @@ var app1 = new Vue({
           }
           if (this.pag !== 2) {
             alert('Le credenziali inserite sono errate, Riprova')
+            this.username = ''
+            this.password = ''
           }
           // res is an array of datausers instances
         }
@@ -115,6 +121,8 @@ var app1 = new Vue({
       obj.save((err, res) => {
         if (!err){
           this.pag = 2
+        } else {
+          alert("Lo username o l'e-mail inseriti appartengono già ad un altro account registrato")
         }
       })
     },
