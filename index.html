@@ -3,29 +3,44 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- jquery -->
     <script
 		  src="https://code.jquery.com/jquery-3.3.1.min.js"
 		  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 		  crossorigin="anonymous">
     </script>
+    <!-- restdb.io -->
     <script src="https://ganzo-0e2f.restdb.io/rest/_jsapi.js"></script>
+    <!-- vue cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
     <title>Ganzo</title>
   </head>
   <body>
-    <h1 style="color:#4f2fcc;margin:25px 0px 40px 0px;font-size:10vh;text-align:center;">Ganzo</h1>
+
     <div id="app-1">
-      <input v-model="username" placeholder="Inserisci il nome utente">
-      <span>{{username}}</span>
-      <br><br><br>
-      <input v-model="password" placeholder="Inserisci la tua password">
-      <span>{{username}}</span>
-      <br><br><br>
-      <button #click="trova">Login</button>
-      <button #click="">Registrati</button>
-      <br>
-      {{utente.cognome}}
-      <span v-if="tro == 1">Utente trovato </span>
-      <span v-if="tro == 0">Utente non trovato </span>
+
+      <div v-show="pag === 0">
+        <h1 id="titolo" :style="style">Ganzo</h1>
+        <div class="text-center">
+          <input v-model="username" :style="input" placeholder="Inserisci il nome utente">
+          <br><br><br>
+          <input v-model="password" :style="input" placeholder="Inserisci la tua password">
+          <br><br><br>
+          <b-btn :style="btnL" @click="trova">Login</b-btn>
+          <b-btn variant="link" :style="btnR" @click="pagina1">Register</b-btn>
+        </div>
+      </div>
+
+      <div v-show="pag === 1">
+        <h1>Registrati</h1>
+      </div>
+
+      <div v-show="pag === 2">
+        <h1>Home</h1>
+      </div>
+
     </div>
+
   </body>
 </html>
