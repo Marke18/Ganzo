@@ -45,17 +45,11 @@ var app1 = new Vue({
     })
     return {
       message: 'ciao',
-      utente: { }
+      utente: { },
+      username: '',
+      password: '',
+      tro: 2
     }
-  }
-})
-// eslint-disable-next-line
-var login = new Vue({
-  el: '#login',
-  data: {
-    username: '',
-    password: '',
-    tro: 2
   },
   methods: {
     trova () {

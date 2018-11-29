@@ -13,19 +13,19 @@
   </head>
   <body>
     <h1 style="color:#4f2fcc;margin:25px 0px 40px 0px;font-size:10vh;text-align:center;">Ganzo</h1>
-    <div id="login">
-      <input v-model="username" placeholder="Inserisci il nome utente"><span>{{username}}</span>
+    <div id="app-1">
+      <input v-model="username" placeholder="Inserisci il nome utente">
+      <span>{{username}}</span>
       <br><br><br>
       <input v-model="password" placeholder="Inserisci la tua password">
+      <span>{{username}}</span>
       <br><br><br>
       <button #click="trova">Login</button>
       <button #click="">Registrati</button>
       <br>
+      {{utente.cognome}}
       <span v-if="tro == 1">Utente trovato </span>
       <span v-if="tro == 0">Utente non trovato </span>
-    </div>
-    <div id="app-1">
-      {{utente.cognome}}
     </div>
   </body>
 </html>
