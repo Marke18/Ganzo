@@ -39,17 +39,9 @@ var titolo2 = new Vue({
 //eslint-disable-next-line
 var app1 = new Vue({
   el: '#app-1',
-  data () {
-    // LOGIN
-    db.datausers.getById('5bfe68f728f51750000042f2', (err, res) => {
-      if (!err) {
-        // res is a datausers instance
-        console.log(res)
-        this.utente = res
-      }
-    })
+  data: {
     return {
-      utente: { },
+      // LOGIN
       username: '',
       password: '',
       pag: 0,
