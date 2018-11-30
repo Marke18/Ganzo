@@ -132,11 +132,18 @@ var app1 = new Vue({
     },
     pagina0 () {
       this.pag = 0
+      this.username = ''
+      this.password = ''
+      this.account.username = ''
+      this.account.password = ''
+      this.account.nome = ''
+      this.account.cognome = ''
+      this.account.email = ''
     },
     // HOME
     cancellaAccount () {
       var query = {} // get all records
-      var hints = {'$orderby': {'_id': -1}} // top ten, sort by creation id in descending order
+      var hints = {'$orderby': {'_id': -1}} // '$max': 10 --> top ten, sort by creation id in descending order
       db.datausers.find(query, hints, (err, res) => {
         if (!err) {
           var tro = 0
@@ -145,7 +152,7 @@ var app1 = new Vue({
             if (res[i].username === this.username || res[i].username === this.account.username) {
               tro = 1
               obj = res[i]
-              this.pag = 0
+              this.pagina0()
               obj.delete((err, res) => {
                 if (!err) {
                 }
