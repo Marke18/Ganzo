@@ -17,85 +17,20 @@
 
   </head>
   <body>
-    <div id="app-1">
+    <div id="app">
 
       <div v-show="pag === 0">
-        <h1 id="titolo" :style="style">Ganzo</h1>
-        <div class="text-center">
-          <b-form-input v-model="username" placeholder="Inserisci il nome utente" :style="input" required></b-form-input>
-          <br><br><br>
-          <b-form-input v-model="password" placeholder="Inserisci la tua password" :style="input" type="password" required></b-form-input>
-          <br><br><br>
-          <b-btn @click="trova" :style="btnL" type="submit">Login</b-btn>
-          <b-btn variant="link" @click="pagina1" :style="btnR">Registrati</b-btn>
-        </div>
+        <titolo></titolo>
+        <login></login>
       </div>
 
       <div v-show="pag === 1">
-        <h1 id="titolo2" :style="style">Ganzo</h1>
-        <div class="text-center">
-          <b-form-input v-model="account.email" placeholder="Inserisci la tua e-mail" :style="input" type="email" required></b-form-input>
-          <br><br>
-          <b-form-input v-model="account.nome" placeholder="Inserisci il nome" :style="input" required></b-form-input>
-          <br><br>
-          <b-form-input v-model="account.cognome" placeholder="Inserisci il cognome" :style="input" required></b-form-input>
-          <br><br><br><br>
-          <b-form-input v-model="account.username" placeholder="Inserisci il nome utente" :style="input" required></b-form-input>
-          <br><br>
-          <b-form-input v-model="account.password" placeholder="Inserisci la tua password" :style="input" type="password" required></b-form-input>
-          <br><br><br><br>
-          <b-btn @click="creaAccount" :style="[btnL, { marginBottom : '8vh' }]" type="submit">Registrati</b-btn>
-          <b-btn variant="link" @click="pagina0" :style="[btnR, { marginBottom : '8vh' }]">Annulla</b-btn>
-        </div>
+        <titolo2></titolo2>
+        <registrati></registrati>
       </div>
 
       <div v-show="pag === 2">
-        <div style="height: 20vh;background-color: #4f2fcc;margin: 0vh;">
-          <div style="height: 12vh;margin: 0vh;color: white;">
-            <b-navbar toggleable="md" style="padding: 3vh 5%;">
-
-              <b-navbar-toggle target="nav_collapse" style="color:white;"></b-navbar-toggle>
-
-              <b-nav-form style="float:right;">
-                <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Search"/>
-                <!--<b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>-->
-              </b-nav-form>
-
-              <b-collapse is-nav id="nav_collapse">
-
-                <!-- Right aligned nav items -->
-                <b-navbar-nav class="ml-auto">
-
-                  <b-nav-item href="#"><span style="color:white;" disabled>Profilo</span></b-nav-item>
-                  <b-nav-item @click="cancellaAccount"><span style="color:white;">Elimina account</span></b-nav-item> <!-- da mettere in profilo -->
-                  <b-nav-item @click="pagina0"><span style="color:white;">Logout</span></b-nav-item>
-
-                </b-navbar-nav>
-
-              </b-collapse>
-            </b-navbar>
-          </div>
-          <div style="height: 8vh;margin: 0vh;color: white;" class="text-center">
-            <h3>Ganzo</h3>
-          </div>
-        </div>
-        <div style="margin: 1vh 2%;width:96%;">
-          <b-card header-tag="header" footer-tag="footer">
-              <div slot="header" style="height:8vh;">
-                <div>
-
-                </div>
-                <p>{{headerSlot}}</p>
-              </div>
-              <div slot="footer" style="height:15vh;">
-                <p>{{footerSlot}}</p>
-                <b-btn variant="link" :style="[btnR, { float: 'left', margin: '5vh 0 0 -8%' }]">BUTTON</b-btn>
-                <b-btn variant="link" :style="[btnR, { float: 'left', margin: '5vh 0 0 -10%' }]">BUTTON</b-btn>
-
-              </div>
-              <b-card :style="bodyCard"></b-card-img>
-          </b-card>
-        </div>
+        <home></home>
       </div>
 
     </div>
